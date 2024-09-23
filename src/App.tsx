@@ -1,8 +1,12 @@
 function App() {
   return (
-    <h1>
-      My test app
-    </h1>
+    <div>
+      <h1>
+        My test app
+      </h1>
+      <p>Настройка пайплайнов</p>      
+    </div>
+
   )
 }
 
