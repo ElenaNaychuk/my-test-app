@@ -1,0 +1,24 @@
+name: Check Branch Name
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  check-branch-name:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Шаг 1: Клонирование репозитория
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      # Шаг 2: Проверка названия ветки
+      - name: Validate branch name
+        run: |
+          branch_name="${{ github.head_ref }}"
+          if [[ ! "$branch_name" =~ ^(fix|feat|refactor) ]]; then
+            echo "Error: Branch name '$branch_name' must start with 'fix', 'feat', or 'refactor'."
+            exit 1
+          fi
